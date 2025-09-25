@@ -1,0 +1,11 @@
+h1
+{
+    background-color: pink;
+}
+h1{
+    background-color: yellow;
+}
+table,tr,td,th{
+    border:1px;
+    border-style: solid;
+}
