@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hover swap bg</title>
+  <style>
+    .swap{
+      display: inline-block;
+      width: 300px;
+      aspect-ratio: 4 / 3;
+      background: url("../images/cat.jpg") center/cover no-repeat;
+    }
+    .swap:hover{
+      background-image: url("../images/dog.jpg"); /* Sửa ở đây */
+    }
+  </style>
+</head>
+<body>
+  <a class="swap" href="../images/cat.jpg" aria-label="Open cat image"></a>
+</body>
+</html>

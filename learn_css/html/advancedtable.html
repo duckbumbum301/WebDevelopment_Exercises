@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>d</title>
+    <style>
+        tbody tr:hover{
+            background-color:yellow;
+            font-style:italic;
+            cursor:pointer;
+        }
+        table,tr,th,td{
+            border:1px;
+            border-style:solid;
+        }
+        thead{
+            background-color:purple;
+            color:white;
+            font-weight:bold;
+        }
+        tbody tr:nth-child(2n+1){
+            background-color:cyan;
+        }
+        tbody tr:nth-child(2n){
+            background-color:orange;
+        }
+        </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td>P1</td>
+                <td>Pepsi</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>P2</td>
+                <td>Coca</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>P3</td>
+                <td>Sting</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>P4</td>
+                <td>C2</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>P5</td>
+                <td>Boncha</td>
+                <td>19</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
