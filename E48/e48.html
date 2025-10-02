@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Register – Jackson Electronics</title>
+  <style>
+    :root {
+      --panel: #c7e6ff;
+      --rule: #8fb5d3;
+      --border: #7aa9d1;
+      --text: #0f2b44;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: #eaf4ff;
+      font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+      color: var(--text);
+      padding: 20px;
+    }
+    .card {
+      width: 760px;
+      margin: 0 auto;
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 2px 0 #5e8fb8, inset 0 6px 0 rgba(255,255,255,.35);
+      padding: 18px 22px 24px;
+    }
+    .banner { text-align: center; margin-bottom: 8px; }
+    .banner img { height: 64px; }
+
+    h1 {
+      font-family: "Times New Roman", Georgia, serif;
+      text-align: center;
+      letter-spacing: .3px;
+      margin: 8px 0 6px;
+    }
+    .sub { text-align: center; font-size: 13px; margin: 0 0 12px; }
+
+    hr.rule { border: none; border-top: 1px solid var(--rule); margin: 10px 0 14px; }
+
+    table.form { width: 100%; border-collapse: collapse; }
+    table.form td { padding: 6px 6px; vertical-align: middle; font-size: 14px; }
+    td.label { width: 140px; color: #13334f; white-space: nowrap; }
+
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: #fff;
+      outline: none;
+    }
+    input.sm { width: 70px; }
+    input.md { width: 200px; }
+    input.full { width: 100%; }
+
+    .row { display: flex; gap: 10px; align-items: center; }
+    .options { display: flex; gap: 24px; flex-wrap: wrap; }
+    .sep { height: 1px; background: var(--rule); margin: 8px 0 12px; }
+    textarea { height: 140px; resize: vertical; }
+
+    .buttons { text-align: center; margin-top: 14px; }
+    button {
+      padding: 6px 18px;
+      border: 1px solid #47698a;
+      background: #dfefff;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover { background: #f4fbff; }
+
+    .help { font-size: 12px; color: #2b425a; text-align: left; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="banner">
+      <!-- Đặt Jackson.gif cùng thư mục, hoặc đổi src nếu dùng đường dẫn khác -->
+      <img src="images/Jackson.gif" alt="Jackson Electronics" />
+    </div>
+
+    <h1>Registration Form</h1>
+    <p class="sub">Register your Jackson Electronics product here</p>
+    <hr class="rule" />
+
+    <form id="registerForm"
+          onsubmit="event.preventDefault(); alert('Thank you! Your product has been registered.');">
+
+      <table class="form">
+        <tr>
+          <td class="label">First Name:</td>
+          <td><input class="md" type="text" name="first_name" /></td>
+          <td class="label">Last Name:</td>
+          <td><input class="md" type="text" name="last_name" /></td>
+        </tr>
+
+        <tr>
+          <td class="label">Address #1:</td>
+          <td colspan="3"><input class="full" type="text" name="address1" /></td>
+        </tr>
+
+        <tr>
+          <td class="label">Address #2:</td>
+          <td colspan="3"><input class="full" type="text" name="address2" /></td>
+        </tr>
+
+        <tr>
+          <tr>
+  <td class="label">City:</td>
+  <td><input class="md" type="text" name="city" /></td>
+
+  <!-- Gom State + Zip vào cùng ô, mỗi cái là 1 cặp label+input -->
+  <td colspan="2">
+    <div class="inline-group">
+      <label for="state">State:</label>
+      <input id="state" class="sm" type="text" name="state" maxlength="10" />
+    </div>
+
+                <div class="inline-group">
+                <label for="zip">Zip:</label>
+                <input id="zip" class="sm" type="text" name="zip" maxlength="10" />
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+          <td class="label">Country:</td>
+          <td colspan="3">
+            <select name="country" style="max-width: 240px">
+              <option selected>United States</option>
+              <option>Australia</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+              <option>Viet Nam</option>
+              <option>Other</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <div class="sep"></div>
+
+      <table class="form">
+        <tr>
+          <td class="label">Product:</td>
+          <td>
+            <select name="product" style="max-width: 200px">
+              <option selected>ScanMaster</option>
+              <option>ScanMaster Pro</option>
+              <option>CardMaster</option>
+              <option>AudioMix</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">Date Purchased:</td>
+          <td><input class="md" type="date" name="purchase_date" /></td>
+        </tr>
+
+        <tr>
+          <td class="label">Serial #:</td>
+          <td><input class="md" type="text" name="serial" /></td>
+        </tr>
+
+        <tr>
+          <td class="label">Used for:</td>
+          <td colspan="3">
+            <div class="options">
+              <label><input type="radio" name="usedfor" value="Home" /> Home</label>
+              <label><input type="radio" name="usedfor" value="Business" /> Business</label>
+              <label><input type="radio" name="usedfor" value="Government" /> Government</label>
+              <label><input type="radio" name="usedfor" value="Educational Institution" /> Educational Institution</label>
+              <label><input type="radio" name="usedfor" value="Other" /> Other</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">System (check all that apply):</td>
+          <td colspan="3">
+            <div class="options">
+              <label><input type="checkbox" name="system" value="Windows" /> Windows</label>
+              <label><input type="checkbox" name="system" value="Macintosh" /> Macintosh</label>
+              <label><input type="checkbox" name="system" value="UNIX" /> UNIX</label>
+              <label><input type="checkbox" name="system" value="Other" /> Other</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label" style="vertical-align: top;">Comments?:</td>
+          <td colspan="3">
+            <textarea name="comments" placeholder="Type your comments here..."></textarea>
+          </td>
+        </tr>
+      </table>
+
+      <div class="buttons">
+        <button type="submit">Click to register</button>
+        <button type="reset">Click to cancel</button>
+      </div>
+
+      <div class="help">
+        <p>Tip: “Click to register” will show a confirmation alert. “Click to cancel” resets all fields.</p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
