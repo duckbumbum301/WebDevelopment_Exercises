@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Online Classifieds Search Form</title>
+<style>
+  :root{
+    --panel:#c9f3ff;     /* nền xanh nhạt như ảnh mẫu */
+    --border:#2e7ebf;    /* viền xanh */
+    --rule:#9fd3ea;      /* đường kẻ mảnh */
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:#e8f7ff;
+    font:14px/1.35 "Trebuchet MS", Tahoma, Arial, sans-serif;
+    color:#043a52;
+    padding:24px;
+  }
+  .card{
+    width:700px;
+    margin:auto;
+    background:var(--panel);
+    border:2px solid var(--border);
+    border-radius:3px;
+    padding:18px 20px 22px;
+  }
+  h1{
+    margin:0 0 6px;
+    color:#e31717;           /* tiêu đề đỏ */
+    font-size:26px;
+    font-weight:700;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .rule{
+    height:1px;
+    background:var(--rule);
+    margin:6px 0 10px;
+  }
+
+  .sec-title{
+    font-weight:700;
+    margin:10px 0 6px;
+  }
+  .group{ margin:0 0 6px; }
+
+  /* lưới cho radio/checkbox để bày theo 2 hàng */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, max-content);
+    gap:8px 22px;
+    align-items:center;
+  }
+  .grid-4{
+    display:grid;
+    grid-template-columns: repeat(4, max-content);
+    gap:8px 18px;
+    align-items:center;
+  }
+
+  input[type="text"]{
+    border:1px solid #8fbfdd;
+    background:#fff;
+    border-radius:3px;
+    padding:6px 8px;
+  }
+  .date{
+    width:150px;
+  }
+  .keyword{
+    width:100%;
+  }
+
+  /* Khu nút có icon */
+  .actions{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    gap:48px;
+  }
+  .act{
+    text-align:center;
+  }
+  .act button{
+    border:0;
+    background:transparent;
+    cursor:pointer;
+  }
+  .act img{ display:block; margin:auto; }
+  .act .lbl{ margin-top:2px; font-weight:700; }
+  .green{ color:#037a00; }
+  .blue{  color:#0046cc; }
+  .pink{  color:#ff0a68; }
+
+  /* Chú thích dưới cùng (tùy chọn) */
+  .note{
+    font-size:12px; color:#0e4867; margin-top:8px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Online Classifieds Search Form</h1>
+    <div class="rule"></div>
+
+    <!-- 1) Section -->
+    <div class="group">
+      <div class="sec-title">1) Search for a classified in the following sections:</div>
+      <div class="grid">
+        <label><input type="radio" name="section" value="Employment"> Employment</label>
+        <label><input type="radio" name="section" value="Personal"> Personal</label>
+        <label><input type="radio" name="section" value="For Sale"> For Sale</label>
+        <label><input type="radio" name="section" value="Miscellaneous"> Miscellaneous</label>
+        <label><input type="radio" name="section" value="Housing"> Housing</label>
+        <label><input type="radio" name="section" value="All"> All of the above</label>
+      </div>
+    </div>
+
+    <!-- 2) Publications -->
+    <div class="group">
+      <div class="sec-title">2) Search the following publications:</div>
+      <div class="grid-4">
+        <label><input type="checkbox" checked> Midwest times</label>
+        <label><input type="checkbox"> Modern News</label>
+        <label><input type="checkbox"> Employment Today</label>
+        <label><input type="checkbox" checked> Great Lakes Classifieds</label>
+        <label><input type="checkbox"> Middleton Daily</label>
+        <label><input type="checkbox"> Cashtown Daily News</label>
+      </div>
+    </div>
+
+    <!-- 3) Dates -->
+    <div class="group">
+      <div class="sec-title">3) From to</div>
+      <input class="date" type="text" placeholder="mm/dd/yy" aria-label="From date">
+      &nbsp;to&nbsp;
+      <input class="date" type="text" placeholder="mm/dd/yy" aria-label="To date">
+    </div>
+
+    <!-- 4) Keywords -->
+    <div class="group">
+      <div class="sec-title">4) Enter a few keywords to describe the classified.</div>
+      <input class="keyword" type="text" placeholder="">
+    </div>
+
+    <!-- 5) Options -->
+    <div class="group">
+      <div class="sec-title">5) Click one of the options below:</div>
+
+      <div class="actions">
+        <div class="act">
+          <button type="button" id="btnSearch" title="Search">
+            <img src="images/Search.gif" alt="Search icon" width="46" height="45">
+            <div class="lbl green"></div>
+          </button>
+        </div>
+
+        <div class="act">
+          <button type="button" id="btnHelp" title="Help">
+            <img src="images/Help.gif" alt="Help icon" width="46" height="45">
+            <div class="lbl blue"></div>
+          </button>
+        </div>
+
+        <div class="act">
+          <button type="reset" title="Cancel">
+            <img src="images/Cancel.gif" alt="Cancel icon" width="46" height="45">
+            <div class="lbl pink"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+    </div>
+  </div>
+
+<script>
+  // Search simulation
+  document.getElementById('btnSearch').addEventListener('click', function(){
+    alert('Searching classifieds... (simulation)');
+  });
+
+  // Help (mở trang trợ giúp nếu có; không thì hiện alert)
+  document.getElementById('btnHelp').addEventListener('click', function(){
+    // Nếu bạn có file help.html, dùng dòng dưới:
+    // window.open('help.html','_blank');
+    alert('Help: chọn mục, đánh dấu ấn phẩm, nhập khoảng ngày và vài từ khoá. (simulation)');
+  });
+</script>
+</body>
+</html>
