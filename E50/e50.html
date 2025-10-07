@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Nguyen Chi Duc</title>
+<style>
+  :root{
+    --panel:#cfefff;        /* nền xanh nhạt giống hình */
+    --border:#2e7ebf;       /* viền xanh */
+    --rule:#9fd3ea;         /* đường kẻ mảnh */
+    --text:#073048;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:#eaf6ff;
+    font:14px/1.4 "Trebuchet MS", Tahoma, Arial, sans-serif;
+    color:var(--text);
+    padding:24px;
+  }
+  .card{
+    width:740px;
+    margin:auto;
+    background:var(--panel);
+    border:2px solid var(--border);
+    border-radius:3px;
+    padding:18px 22px 24px;
+  }
+  .banner{ text-align:center; margin-bottom:10px; }
+  .banner img{ height:80px; }
+
+  h1{
+    margin:2px 0 6px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size:24px;
+    font-weight:700;
+  }
+  .rule{ height:1px; background:var(--rule); margin:8px 0 14px; }
+
+  .row{ display:flex; gap:12px; align-items:center; margin:10px 0; }
+  .label{ min-width:230px; }
+  input[type="text"], select, textarea{
+    border:1px solid #87b9d9;
+    background:#fff;
+    border-radius:3px;
+    padding:6px 8px;
+  }
+  input.sm{ width:160px; }
+  input.xs{ width:120px; }
+  textarea{ width:100%; height:90px; resize:vertical; }
+
+  /* Bảng chi phí */
+  table.exp{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:6px;
+    background:#e9f7ff;
+  }
+  table.exp th, table.exp td{
+    border:1px solid #8fbfdd;
+    padding:6px 8px;
+    text-align:left;
+  }
+  table.exp th{
+    background:#d7efff;
+    font-weight:700;
+  }
+  .amt{ width:120px; text-align:right; }
+  .date{ width:120px; }
+  .desc{ width:100%; }
+
+  /* Nút */
+  .actions{ margin-top:12px; display:flex; gap:10px; }
+  button{
+    padding:7px 14px;
+    border:1px solid #4a6f8f;
+    background:#dfedff;
+    border-radius:4px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  button:hover{ background:#f6fbff; }
+
+  small.note{ display:block; margin-top:10px; color:#0f4766; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="banner">
+      <img src="images/DeLong.jpg" alt="DeLong Enterprises" />
+    </div>
+
+    <h1>Travel Expense Report</h1>
+    <div class="rule"></div>
+
+    <form id="expenseForm">
+      <!-- 1 -->
+      <div class="row">
+        <div class="label">1) First Name:</div>
+        <input class="sm" type="text" name="firstName" />
+        <div class="label" style="min-width:auto">Last Name:</div>
+        <input class="sm" type="text" name="lastName" />
+      </div>
+
+      <!-- 2 -->
+      <div class="row">
+        <div class="label">2) Social Security Number:</div>
+        <input class="xs" type="text" name="ssn" />
+      </div>
+
+      <!-- 3 -->
+      <div class="row">
+        <div class="label">3) Department:</div>
+        <select name="dept" class="sm">
+          <option selected>Accounting</option>
+          <option>Sales</option>
+          <option>Operations</option>
+          <option>HR</option>
+          <option>IT</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- 4 -->
+      <div class="row" style="align-items:flex-start">
+        <div class="label">4) Describe the purpose of your trip.</div>
+        <textarea name="purpose"></textarea>
+      </div>
+
+      <!-- 5 -->
+      <div class="row" style="margin-top:6px">
+        <div class="label" style="min-width:auto">5) Itemize your travel expenses</div>
+      </div>
+
+      <table class="exp" aria-label="Travel expenses table">
+        <thead>
+          <tr>
+            <th style="width:130px">Date</th>
+            <th>Description</th>
+            <th style="width:160px">Category</th>
+            <th style="width:130px">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 4 dòng mẫu như hình -->
+          <tr>
+            <td><input class="date" type="text" name="date1" placeholder="mm/dd/yy" /></td>
+            <td><input class="desc" type="text" name="desc1" /></td>
+            <td>
+              <select name="cat1">
+                <option selected>Meal</option>
+                <option>Lodging</option>
+                <option>Transportation</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td><input class="amt" type="text" name="amt1" /></td>
+          </tr>
+          <tr>
+            <td><input class="date" type="text" name="date2" placeholder="mm/dd/yy" /></td>
+            <td><input class="desc" type="text" name="desc2" /></td>
+            <td>
+              <select name="cat2">
+                <option selected>Meal</option>
+                <option>Lodging</option>
+                <option>Transportation</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td><input class="amt" type="text" name="amt2" /></td>
+          </tr>
+          <tr>
+            <td><input class="date" type="text" name="date3" placeholder="mm/dd/yy" /></td>
+            <td><input class="desc" type="text" name="desc3" /></td>
+            <td>
+              <select name="cat3">
+                <option selected>Meal</option>
+                <option>Lodging</option>
+                <option>Transportation</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td><input class="amt" type="text" name="amt3" /></td>
+          </tr>
+          <tr>
+            <td><input class="date" type="text" name="date4" placeholder="mm/dd/yy" /></td>
+            <td><input class="desc" type="text" name="desc4" /></td>
+            <td>
+              <select name="cat4">
+                <option selected>Meal</option>
+                <option>Lodging</option>
+                <option>Transportation</option>
+                <option>Other</option>
+              </select>
+            </td>
+            <td><input class="amt" type="text" name="amt4" /></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 6 -->
+      <div class="row">
+        <div class="label">6) Have you submitted your receipts?</div>
+        <label><input type="radio" name="receipts" value="Yes"> Yes</label>
+        <label><input type="radio" name="receipts" value="No"> No</label>
+      </div>
+
+      <!-- Buttons + note -->
+      <div class="actions">
+        <button type="submit">Submit travel expenses</button>
+        <button type="reset">Reset</button>
+      </div>
+      <small class="note">Questions? Contact Debbie Larson in Accounting (ext. 2150).</small>
+    </form>
+  </div>
+
+<script>
+  
+  document.getElementById('expenseForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    
+    const amounts = Array.from(document.querySelectorAll('.amt'))
+                     .map(i => parseFloat(i.value.replace(/,/g,'')) || 0);
+    const total = amounts.reduce((a,b)=>a+b,0);
+    alert('Your travel expense report has been submitted.\nTotal amount: $' + total.toFixed(2));
+    
+  });
+</script>
+</body>
+</html>

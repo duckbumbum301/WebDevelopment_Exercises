@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>NguyenChiDuc</title>
+<style>
+  :root{
+    --teal:#0b7f7a;      /* nền trong panel */
+    --panel:#007a78;     /* màu gần với ảnh */
+    --border:#1b7fd6;    /* viền xanh dương */
+    --rule:#4bb8c0;      /* đường kẻ mảnh */
+    --text:#f2f6f6;
+  }
+  *{box-sizing:border-box}
+  body{
+    background:#e6f7ff;
+    font:14px/1.35 "Trebuchet MS", Tahoma, Arial, sans-serif;
+    color:#ffffff;
+    padding:22px;
+  }
+  .card{
+    width:720px;
+    margin:auto;
+    background:var(--panel);
+    border:2px solid var(--border);
+    border-radius:3px;
+    padding:16px 20px 22px;
+  }
+  .banner{ text-align:center; margin-bottom:6px; }
+  .banner img{ height:72px; }
+
+  h1{
+    text-align:center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight:700;
+    letter-spacing:.5px;
+    color:#e9f1f3;
+    margin:10px 0 8px;
+  }
+  .rule{ height:1px; background:var(--rule); opacity:.7; margin:6px 0 12px; }
+
+  table.form{ width:100%; border-collapse:collapse; }
+  table.form td{ padding:6px 6px; vertical-align:middle; color:var(--text); }
+  td.num{ width:28px; padding-right:0; text-align:right; color:#ffe9c2; }
+  td.label{ width:220px; white-space:nowrap; }
+  td.smalllabel{ width:50px; text-align:right; padding-right:6px; }
+
+  input[type="text"], select, textarea{
+    border:1px solid #cde5ee;
+    background:#ffffff;
+    color:#083336;
+    border-radius:3px;
+    padding:5px 8px;
+    outline:none;
+  }
+  input.short{ width:160px; }
+  input.tiny{ width:120px; }
+  .listbox{ width:220px; }
+
+  .btns{ margin-top:10px; text-align:left; }
+  button{
+    padding:6px 14px;
+    border:1px solid #2f5f86;
+    background:#dfedff;
+    color:#05324b;
+    font-weight:600;
+    border-radius:4px;
+    cursor:pointer;
+    margin-right:6px;
+  }
+  button:hover{ background:#f3fbff; }
+  ::placeholder{ color:#97a9ad; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="banner">
+      <img src="images/Logo.gif" alt="St. Mary's of Northland Pines">
+    </div>
+
+    <h1>Newborn Registration</h1>
+
+    <form id="nbForm">
+      <table class="form" aria-label="Newborn registration">
+        <tr>
+          <td class="label" colspan="2">Date</td>
+          <td colspan="3"><input class="tiny" type="text" name="reg_date" placeholder="mm/dd/yy"></td>
+        </tr>
+
+        <tr>
+          <td class="num">1)</td>
+          <td class="label">Infant's first name</td>
+          <td><input class="short" type="text" name="infant_first"></td>
+          <td class="smalllabel">Last:</td>
+          <td><input class="short" type="text" name="infant_last"></td>
+        </tr>
+
+        <tr>
+          <td class="num">2)</td>
+          <td class="label">Medical Record #</td>
+          <td colspan="3"><input class="short" type="text" name="mrn"></td>
+        </tr>
+
+        <tr>
+          <td class="num">3)</td>
+          <td class="label">Date of birth</td>
+          <td colspan="3"><input class="tiny" type="text" name="dob" placeholder="mm/dd/yy"></td>
+        </tr>
+
+        <tr>
+          <td class="num">4)</td>
+          <td class="label">Birth weight</td>
+          <td colspan="3"><input class="tiny" type="text" name="weight"></td>
+        </tr>
+
+        <tr>
+          <td class="num">5)</td>
+          <td class="label">APGAR score</td>
+          <td colspan="3"><input class="tiny" type="text" name="apgar"></td>
+        </tr>
+
+        <tr>
+          <td class="num">6)</td>
+          <td class="label">Mother's first name</td>
+          <td><input class="short" type="text" name="mom_first"></td>
+          <td class="smalllabel">Last:</td>
+          <td><input class="short" type="text" name="mom_last"></td>
+        </tr>
+
+        <tr>
+          <td class="num">7)</td>
+          <td class="label">Father's first name</td>
+          <td><input class="short" type="text" name="dad_first"></td>
+          <td class="smalllabel">Last:</td>
+          <td><input class="short" type="text" name="dad_last"></td>
+        </tr>
+
+        <tr>
+          <td class="num" style="vertical-align:top">8)</td>
+          <td class="label" style="vertical-align:top">Physician (check all that apply)</td>
+          <td colspan="3">
+            <!-- listbox nhiều lựa chọn giống ảnh -->
+            <select class="listbox" name="physicians" size="5" multiple>
+              <option>Dr. Warren Albert</option>
+              <option>Dr. Maria Alvarez</option>
+              <option>Dr. Karen Brinkman</option>
+              <option>Dr. Michael Kerry</option>
+              <option>Dr. Laura Chen</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <div class="btns">
+        <button type="submit">Register</button>
+        <button type="reset">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+<script>
+  
+  document.getElementById('nbForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Newborn registration submitted (simulation).");
+  });
+</script>
+</body>
+</html>
