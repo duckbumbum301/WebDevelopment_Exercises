@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>VNExpress Giáo dục - RSS (CORS proxy)</title>
+  <script type="text/javascript">
+    function get_rss() {
+      var my_div = document.getElementById('my_div');
+      var rss_tbody = document.getElementById('rss_tbody');
+
+      var xhr = new XMLHttpRequest();
+      // ✅ Dùng proxy AllOrigins để tránh lỗi CORS
+      xhr.open(
+        'GET',
+        'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://vnexpress.net/rss/giao-duc.rss'),
+        true
+      );
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            var string_xml = xhr.responseText;
+            my_div.innerText = string_xml; // Hiển thị nội dung RSS raw
+
+            // ✅ Parse XML bằng DOMParser
+            var parser = new DOMParser();
+            var xml = parser.parseFromString(string_xml, 'text/xml');
+            var items = xml.getElementsByTagName('item');
+
+            display_rss(items, rss_tbody);
+          } else {
+            my_div.innerText = 'HTTP error: ' + xhr.status;
+          }
+        }
+      };
+
+      xhr.onerror = function () {
+        my_div.innerText = 'Network/CORS error.';
+      };
+
+      xhr.send();
+    }
+
+    function textOf(el, tag) {
+      var node = el.getElementsByTagName(tag)[0];
+      return node ? (node.textContent || '').trim() : '';
+    }
+
+    function display_rss(items, rss_tbody) {
+      rss_tbody.innerHTML = ''; // Xóa dữ liệu cũ
+      for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var title = textOf(item, 'title');
+        var link = textOf(item, 'link');
+        var pubDate = textOf(item, 'pubDate');
+        var desc = textOf(item, 'description');
+
+        var tr = document.createElement('tr');
+
+        var td_title = document.createElement('td');
+        var a = document.createElement('a');
+        a.href = link || '#';
+        a.target = '_blank';
+        a.textContent = title || '(Không có tiêu đề)';
+        td_title.appendChild(a);
+
+        var td_date = document.createElement('td');
+        td_date.innerText = pubDate || '';
+
+        var td_desc = document.createElement('td');
+        td_desc.innerHTML = desc || '';
+
+        tr.appendChild(td_title);
+        tr.appendChild(td_date);
+        tr.appendChild(td_desc);
+
+        rss_tbody.appendChild(tr);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', get_rss);
+  </script>
+</head>
+<body>
+  <div id="my_div" style="height:150px; overflow-y:auto; background:#faebd7; padding:8px"></div>
+
+  <table border="1" cellspacing="0" cellpadding="6" style="margin-top:10px;">
+    <caption><b>VNExpress Giáo dục (RSS)</b></caption>
+    <thead style="background:#f0f0f0;">
+      <tr>
+        <th>Tiêu đề</th>
+        <th>Ngày</th>
+        <th>Mô tả</th>
+      </tr>
+    </thead>
+    <tbody id="rss_tbody"></tbody>
+  </table>
+</body>
+</html>
